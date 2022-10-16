@@ -27,6 +27,7 @@ VALUES (1, 'ROLE_ADMIN');
 INSERT INTO schema_hiber.roles (id, name)
 VALUES (2, 'ROLE_USER');
 
+
 INSERT INTO schema_hiber.users_roles (user_id, role_id)
 VALUES (1, 1);
 

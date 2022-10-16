@@ -13,4 +13,5 @@ import java.util.List;
 public interface RoleRepo extends JpaRepository<Role, Long> {
     Role findRoleByName(String name);
     List<Role> findAll();
+
 }
