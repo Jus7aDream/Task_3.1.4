@@ -60,10 +60,10 @@
     <div class="col-2">
         <!--        nav-flex-colum-->
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-admin-tab" data-toggle="pill" href="#adminPage" role="tab"
-               aria-controls="v-pills-admin" aria-selected="true">Admin</a>
-            <a class="nav-link " id="v-pills-user-tab" data-bs-toggle="pill" href="/user" role="tab"
-               aria-controls="v-pills-user" aria-selected="false">User</a>
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#adminPage" role="tab"
+               aria-controls="v-pills-home" aria-selected="true">Admin</a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#userInfoPage" role="tab"
+               aria-controls="v-pills-profile" aria-selected="false">User</a>
         </div>
         <!--        nav-flex-colum-end-->
     </div>
@@ -392,6 +392,43 @@
                             </div>
                         </div>
                         <!--                        New User addUser-end-->
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="userInfoPage" role="tabpanel"
+                     aria-labelledby="v-pills-profile-tab">
+                    <h1>User information-page</h1>
+                    <div class="border shadow-sm p-3 mb-5 bg-light rounded-top bg-secondary d-flex align-items-center"
+                         style="max-width: 98%; max-height: 50px;">
+                        <h4>About user</h4>
+                    </div>
+                    <div class="border shadow-sm p-3 mb-5 bg-white rounded-bottom topTable"
+                         style="max-width: 98%;">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td th:text="${user.getId()}"></td>
+                                <td th:text="${user.getFirstName()}"></td>
+                                <td th:text="${user.getLastName()}"></td>
+                                <td th:text="${user.getAge()}"></td>
+                                <td th:text="${user.getEmail()}"></td>
+                                <td>
+                                <span th:each="role : ${user.getRoles()}">
+                                    <span th:text="${role}"></span>
+                                </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,6 @@ import ru.kata.spring.boot_security.demo.repo.UserRepo;
 import java.util.List;
 
 @Service
-@Transactional
 @Slf4j
 public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserRepo userRepo;
@@ -43,6 +42,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
     }
 
+    @Transactional
     @Override
     public void addUser(User user) {
         User userFromDB = userRepo.findUserByEmail(user.getUsername());
@@ -53,6 +53,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
     }
 
+    @Transactional
     @Override
     public void updateUser(User user) {
         if (user.getPassword().isEmpty()) {
@@ -63,17 +64,20 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         userRepo.save(user);
     }
 
+    @Transactional
     @Override
     public void deleteUser(Long id) {
         userRepo.deleteUserById(id);
         log.info("User by id: {} deleted", id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User getUserByUsername(String username) {
         return userRepo.findUserByEmail(username);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepo.findUserByEmail(username);
@@ -82,5 +86,4 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
         return user;
     }
-
 }
