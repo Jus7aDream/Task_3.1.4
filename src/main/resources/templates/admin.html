@@ -201,9 +201,11 @@
                                                                             class="form-control form-control-sm"
                                                                             id="Roles"
                                                                             size="2">
-                                                                        <th:block th:each="role : ${allRoles}">
-                                                                            <option th:text="${role}"
-                                                                                    th:value="${role.getId()}"></option>
+                                                                        <th:block>
+                                                                            <option th:each="role : ${allRoles}"
+                                                                                    th:text="${role}"
+                                                                                    th:value="${role.getId()}"
+                                                                                    th:selected="${userFromDB.roles.containsAll(role)}"></option>
                                                                         </th:block>
                                                                     </select>
                                                                 </div>
