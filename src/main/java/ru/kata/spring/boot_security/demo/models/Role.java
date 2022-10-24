@@ -1,8 +1,6 @@
 package ru.kata.spring.boot_security.demo.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -12,11 +10,13 @@ import javax.validation.constraints.Size;
 /**
  * @ In the name of Allah, most gracious and most merciful! 05.10.2022
  */
-@Entity
-@Table(name = "roles")
-@Data
+@Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "roles")
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

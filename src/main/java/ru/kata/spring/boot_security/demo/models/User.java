@@ -18,12 +18,12 @@ import java.util.Set;
  * @ In the name of Allah, most gracious and most merciful 12.09.2022
  */
 @Builder
-@Entity
-@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "users")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
