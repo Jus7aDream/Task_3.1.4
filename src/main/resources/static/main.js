@@ -12,10 +12,10 @@ async function allUsers() {
                 let tableWithUsers = `$(
                         <tr>
                             <td>${user.id}</td>
-                            <td>${user.name}</td>
-                            <td>${user.surname}</td>                                               
+                            <td>${user.firstName}</td>
+                            <td>${user.lastName}</td>  
+                            <td>${user.age}</td>                                               
                             <td>${user.username}</td>
-                            <td>${user.age}</td>  
                             <td>${user.roles.map(role => " " + role.name.substring(5))}</td>
                             <td>
                                 <button type="button" class="btn btn-info" data-toggle="modal" id="buttonEdit"
@@ -68,10 +68,10 @@ async function newUser() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "name": form.name.value,
-                "surname": form.surname.value,
-                "username": form.username.value,
+                "firstName": form.firstName.value,
+                "lastName": form.lastName.value,
                 "age": form.age.value,
+                "username": form.username.value,
                 "password": form.password.value,
                 "roles": newUserRoles
             })
@@ -94,10 +94,10 @@ async function showDeleteModal(id) {
     let user = await getUser(id);
     let form = document.forms["deleteFormBody"];
     form.id.value = user.id;
-    form.name.value = user.name;
-    form.surname.value = user.surname;
-    form.username.value = user.username;
+    form.firstName.value = user.firstName;
+    form.lastName.value = user.lastName;
     form.age.value = user.age;
+    form.username.value = user.username;
     $('#rolesDelete').empty();
     await fetch("http://localhost:8080/admin/authorities")
         .then(res => res.json())
@@ -169,10 +169,10 @@ async function showEditModal(id) {
     let user = await getUser(id);
     let form = document.forms["editFormBody"];
     form.id.value = user.id;
-    form.name.value = user.name;
-    form.surname.value = user.surname;
-    form.username.value = user.username;
+    form.firstName.value = user.firstName;
+    form.lastName.value = user.lastName;
     form.age.value = user.age;
+    form.username.value = user.username;
     form.password.value = user.password;
 
     $("#rolesEdit").empty();
@@ -224,10 +224,10 @@ function editUser() {
             },
             body: JSON.stringify({
                 id: editForm.id.value,
-                name: editForm.name.value,
-                surname: editForm.surname.value,
-                username: editForm.username.value,
+                name: editForm.firstName.value,
+                surname: editForm.lastName.value,
                 age: editForm.age.value,
+                username: editForm.username.value,
                 password: editForm.password.value,
                 roles: editUserRoles
             })
