@@ -6,6 +6,7 @@ import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.repo.RoleRepo;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @ In the name of Allah, most gracious and most merciful! 05.10.2022
@@ -15,12 +16,29 @@ import java.util.List;
 public class RoleServiceImpl implements RoleService {
     private final RoleRepo roleRepo;
 
-    public Role getRoleByName(String name) {
-        return roleRepo.findRoleByName(name);
+
+    @Override
+    public List<Role> findAllRoles() {
+        return roleRepo.findAll();
     }
 
     @Override
-    public List<Role> getAllRoles() {
-        return roleRepo.findAll();
+    public Optional<Role> findRoleById(Long id) {
+        return roleRepo.findById(id);
+    }
+
+    @Override
+    public void addRole(Role role) {
+        roleRepo.save(role);
+    }
+
+    @Override
+    public void updateRole(Role role) {
+        roleRepo.save(role);
+    }
+
+    @Override
+    public void deleteRole(Long id) {
+        roleRepo.deleteById(id);
     }
 }

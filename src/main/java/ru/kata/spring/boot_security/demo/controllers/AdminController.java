@@ -19,13 +19,13 @@ public class AdminController {
     private final UserService userService;
     private final RoleService roleService;
 
-    @GetMapping("/admin")
+    @GetMapping("admin")
     public String showAllUsers(Principal principal, Model model) {
         User user = userService.getUserByUsername(principal.getName());
         model.addAttribute("user", userService.findUserById(user.getId()));
         model.addAttribute("users", userService.findAllUsers());
         model.addAttribute("addUser", new User());
-        model.addAttribute("allRoles", roleService.getAllRoles());
+        model.addAttribute("allRoles", roleService.findAllRoles());
         return "admin";
     }
 
