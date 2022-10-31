@@ -47,7 +47,7 @@
                 <span class="font-weight-bold" th:text="${user.getUsername()}"></span>
                 with roles:
                 <span th:each="role : ${user.getRoles()}">
-                    <span th:text="${role}"></span>
+                    <span th:text="${role.name}"></span>
                 </span>
             </h5>
         </div>
@@ -262,7 +262,7 @@
                                                 <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Close
                                                 </button>
-                                                <input type="submit" class="btn btn-danger"
+                                                <input type="submit" class="btn btn-info"
                                                        value="Edit" id="editButton"/>
                                             </div>
                                         </form>
@@ -277,7 +277,7 @@
                             </div>
                             <div class="row justify-content-center align-items-center bg-white">
                                 <div class="col-4">
-                                    <form class="text-center" id="addNewUserTable">
+                                    <form class="text-center" id="addNewUserTable" name="addNewUserTable">
                                         <div class="form-group fw-bold">
                                             <div class="form-group m-3">
                                                 <div class="form-group m-3">
@@ -299,7 +299,7 @@
                                                 </div>
 
                                                 <div class="form-group m-3">
-                                                    <label for="newUsername" class="col-form-label">E-Mail</label>
+                                                    <label for="newUsername" class="col-form-label">Email</label>
                                                     <input type="text" class="form-control" id="newUsername"
                                                            name="username" value="" required/>
                                                 </div>
