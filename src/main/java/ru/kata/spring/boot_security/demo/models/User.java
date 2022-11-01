@@ -50,12 +50,12 @@ public class User implements UserDetails {
     @Column(name = "email", unique=true)
     private String email;
 
-//    @NotEmpty(message = "Password should not be empty")
-//    @Size(min = 3, max = 255, message = "Password should be between 3 and 255 characters")
+    @NotEmpty(message = "Password should not be empty")
+    @Size(min = 3, max = 255, message = "Password should be between 3 and 255 characters")
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))

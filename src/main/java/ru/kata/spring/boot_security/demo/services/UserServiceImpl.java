@@ -51,9 +51,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Transactional
     @Override
     public void updateUser(User user) {
-        if (user.getPassword().isEmpty()) {
-            user.setPassword(userRepo.findUserByEmail(user.getUsername()).getPassword());
-        } else {
+        String oldPassword = findUserById(user.getId()).getPassword();
+        String newPassword = user.getPassword();
+        if(!oldPassword.equals(newPassword)) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
         userRepo.save(user);

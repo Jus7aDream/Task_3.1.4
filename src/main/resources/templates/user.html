@@ -43,7 +43,7 @@
         <span class="font-weight-bold" th:text="${user.getUsername()}"></span>
         with roles:
         <span th:each="role : ${user.getRoles()}">
-            <span th:text="${role}"></span>
+            <span th:text="${role.getName().toString().replace('ROLE_', '')}"></span>
         </span>
     </a>
     <ul class="navbar-nav px-3">
@@ -93,7 +93,7 @@
                                 <td th:text="${user.email}"></td>
                                 <td>
                                     <span th:each="role : ${user.getRoles()}">
-                                        <span th:text="${role}"></span>
+                                        <span th:text="${role.getName().toString().replace('ROLE_', '')}"></span>
                                     </span>
                                 </td>
                             </tr>
